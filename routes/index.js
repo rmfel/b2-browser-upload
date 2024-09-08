@@ -6,8 +6,9 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
+  const force = req.query.force;
   // Generate an upload URL and token and render them into the page
-  const uploadInfo = await getB2UploadInfo();
+  const uploadInfo = await getB2UploadInfo(force);
   res.render('index', { uploadInfo: uploadInfo });
 });
 
